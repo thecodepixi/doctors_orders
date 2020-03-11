@@ -3,7 +3,7 @@
 
 **Models:** 
 
-- `Order`
+- **`Order`**
 
     X `belongs_to :doctor`
 
@@ -22,7 +22,7 @@
     X only required info are appointment date, doctor info, and appointment type.
 
 
-- `Doctor`
+- **`Doctor`**
 
     X `has_many :orders`
 
@@ -35,7 +35,7 @@
 
 **Controllers:** 
 
-- `OrdersController`
+- **`OrdersController`**
 
     X `index` route, returns all orders
 
@@ -43,13 +43,13 @@
 
     X `create`, adds a new order to the DB
 
-        X `create` will `find_or_create_by` for doctor info
+      X `create` will `find_or_create_by` for doctor info
 
     - `destroy` ?
 
 **Serializer** 
 
-- `OrdersSerializer`
+- **`OrdersSerializer`**
 
     X include all order info except created_at, updated_at, and doctor_id
 
