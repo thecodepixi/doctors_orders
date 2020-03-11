@@ -5,12 +5,13 @@
 
 - `Order`
     - `belongs_to :doctor`
+    - has an 'appointment_date' date
     - has an 'appointment_type' string
     - has 'test_results' string
     - has 'treatment_info' string
     - has 'follow_up' boolean
     - has a 'doctor_id' foreign key
-    - only required info are doctor name and appointment type.
+    - only required info are appointment date, doctor info, and appointment type.
     - if treatment_info or test_results are left blank they default to the string 'None Provided'
 - `Doctor`
     - `has_many :orders`
