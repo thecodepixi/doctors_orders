@@ -1,7 +1,7 @@
 
-# until Doctor.all.count === 10 
-#   Doctor.create(name: Faker::Name.name, specialty: Faker::Company.profession)
-# end 
+until Doctor.all.count === 10 
+  Doctor.create(name: Faker::Name.name, specialty: Faker::Company.profession)
+end 
 
 until Order.all.count === 20 
   appointment_types = ["sick visit", "checkup", "treatment"]
