@@ -1,4 +1,4 @@
-class OrdersSerializer 
+class OrderSerializer 
   def initialize(order_object)
     @order = order_object 
   end 
