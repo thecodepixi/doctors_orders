@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+# until Doctor.all.count === 10 
+#   Doctor.create(name: Faker::Name.name, specialty: Faker::Company.profession)
+# end 
+
+until Order.all.count === 20 
+  appointment_types = ["sick visit", "checkup", "treatment"]
+  order = Order.new(appointment_date: Faker::Date.in_date_period(year: 2019), appointment_type: appointment_types.sample)
+  order.doctor = Doctor.all.sample 
+  order.save 
+end 
