@@ -14,11 +14,12 @@ class OrdersController < ApplicationController
     order = Order.new(
       appointment_date: params[:appointment_date],
       appointment_type: params[:appointment_type],
-      test_results: params[:test_results],
-      treatment_info: params[:treatment_info],
+      test_results: params[:test_results].strip,
+      treatment_info: params[:treatment_info].strip,
       follow_up: params[:follow_up],
     )
     doctor = Doctor.find_or_create_by(name: params[:doctor_name].strip.downcase, specialty: params[:specialty].strip.downcase)
+    
     order.doctor = doctor 
     
     if order.save 
