@@ -31,4 +31,8 @@
     - new order form
     - Follow-Up alert
     - nav bar?? *( this might be unnecessary )*
-- Use Redux to manage state
+- Use Redux to manage state (w/ thunk for async)
+
+To Do, 4pm 3/12: 
+- Work on order preview component
+- Decide on CSS library to incorporate (check for React integration)
