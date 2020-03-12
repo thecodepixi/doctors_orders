@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Doctor's Orders
 
-## Available Scripts
+- an app for tracking doctor visits and/or medical treatment, test results, symptoms, and treatment info
 
-In the project directory, you can run:
+**User Stories:** 
 
-### `yarn start`
+- on main page/index route I can see cards displaying brief info/a preview of all previous "orders"
+- There is a nav bar with links for the homepage and a button to add a new "order" (might not need this?)
+- There is an alert modal that will appear if I have any appointments that require a follow up
+    - The modal will have a check button next to each follow up. When clicked, the appointment will be marked as not needing a follow up and be updated. (This will send a POST request to the API to update that appointment info AND will update the appointment in state)
+- When I click the 'new' button, I am taken to the "/new" route, and see a form for entering new appointment info
+    - the form asks for the appointment date, doctor name and specialty, the reason for my visit as a radio button (checkup, treatment, sick visit), any test results received, any new treatment info, and a check box for whether I need to follow up with the doctor.
+- When I click submit, I am taken to an '/:id' route, and see all of the new appointment info I just entered.
+- From the homepage, if I click on the card with the appointment preview, I am taken to the page for that individual appointment, and can see all of the info from that previous appointment.
+    - If the appointment requires a follow up, there will be a header asking if I have followed up on the appointment yet, and a button to click if I have. (reuse follow-up alert modal?)
+- **Nice to Have**: a way to sort by appointment type (checkup, sick, treatment). Would this just be a drop down sorting feature on the main index page? Would this hit specific API routes for each appointment type, or sort the data in place?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**MUST HAVE:** 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- 3 Routes (using React Router)
+    - Index (all history)
+    - /:id (view a single order)
+    - /new (form for submitting a new appointment)
+- 2 Container Components
+    - Orders container (holds the order previews component, single order component, and the follow-up modal)
+    - New Order container (for new order form)
+- 5 Stateless Components
+    - all orders (holds all of the order preview components)
+    - order preview (preview of single previous)
+    - single order (for the /:id route)
+    - new order form
+    - Follow-Up alert
+    - nav bar?? *( this might be unnecessary )*
+- Use Redux to manage state
