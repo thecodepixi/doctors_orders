@@ -1,10 +1,19 @@
 export default function ordersReducer(
-  state = { orders: [] }, action ) {
+  state = { orders: [], fetching: false }, action ) {
     console.log(action)
     switch ( action.type ) {
-      case "ADD_ORDER" :
-        console.log(state)
-        return { orders: state.orders.concat(`order test ${state.orders.length + 1}`) }
+      case "START_FETCHING_ORDERS" : 
+        return {
+          ...state,
+          orders: [...state.orders],
+          fetching: true 
+        }
+      case "GET_ORDERS" :
+        return {
+          ...state,
+          orders: action.orders,
+          fetching: false 
+        }
       default: 
         return state 
     }
