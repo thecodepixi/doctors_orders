@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Preview = ({ order, match }) => {
+const Preview = ({ order }) => {
   return (
     <ul>
     <li>Appoinment Date: {order.appointment_date.split("T")[0]}</li>

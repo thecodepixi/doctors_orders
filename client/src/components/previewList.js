@@ -10,7 +10,7 @@ const PreviewList = ({ orders, followUpOrders, match }) => {
       { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
 
       { orders.map( order => {
-        return <Preview order={order} key={order.id} match={match}/>
+        return <Preview order={order} key={order.id}/>
       } ) }
 
       <Route path={`${match.url}/orders/:id`} render={ routerProps => <OrderShow {...routerProps} orders={orders}/> }/> 
