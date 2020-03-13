@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchOrders } from '../actions/fetchOrders'
+import Preview from '../components/preview'
 
 class OrderPreviews extends React.Component {
 
@@ -11,6 +12,9 @@ class OrderPreviews extends React.Component {
   render() {
     return (
       <div>
+        { this.props.orders.map( order => {
+          return <Preview order={order} key={order.id}/>
+        })}
       </div>
     )
   }

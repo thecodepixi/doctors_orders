@@ -4,5 +4,8 @@ export function fetchOrders() {
     fetch('/orders')
       .then( resp => resp.json())
       .then( orders => dispatch({ type: "GET_ORDERS", orders}))
+      .catch( error => { 
+        console.log(error) 
+        return alert(error) })
   } 
 }
