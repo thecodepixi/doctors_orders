@@ -1,9 +1,11 @@
 import React from 'react';
 
-const OrderShow = (props) => {
+const OrderShow = ({ match, orders }) => {
+  const order = orders.find( order => order.id === match.params.id )
+
   return (
     <div>
-      <h1>This is an order show page!</h1>
+      <h1>{order.doctor.name}</h1>
     </div>
   )
 }

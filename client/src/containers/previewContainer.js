@@ -1,31 +1,26 @@
 import React from 'react'
+import ReactDom from 'react-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchOrders } from '../actions/fetchOrders'
-import Preview from '../components/preview'
-import FollowUp from '../components/followup'
+import PreviewList from '../components/previewList'
 
 class PreviewContainer extends React.Component {
 
   componentDidMount = () => {
     this.props.fetchOrders()
   }
-  
-  getFollowUpOrders = () => {
-    return this.props.orders.filter( order => order.follow_up === true )
-  }
 
   render() {
 
-    const followUpOrders = this.getFollowUpOrders()
+    const followUpOrders = this.props.orders.filter( order => order.follow_up === true )
 
     return (
       <div>
-
-        { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
-
-        { this.props.orders.map( order => {
-          return <Preview order={order} key={order.id}/>
-        } ) }
+        <Router>
+          <Route exact path={'/'} component={ routerProps => <PreviewList orders={this.props.orders} followUpOrders={followUpOrders} {...routerProps} /> } />
+        </Router>
+        
 
       </div>
     )
