@@ -1,11 +1,14 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom'
+import OrderShow from './order'
 
-const Preview = (props) => {
-  console.log(props.order)
+const Preview = ({match, order}) => {
   return (
     <ul>
-      <li>Appoinment Date: {props.order.appointment_date.split("T")[0]}</li>
-      <li>Doctor Name: {props.order.doctor.name} ({props.order.doctor.specialty})</li>
+      <li>Appoinment Date: {order.appointment_date.split("T")[0]}</li>
+      <li>Doctor Name: {order.doctor.name} ({order.doctor.specialty})</li>
+      <Link to={`/orders/${order.id}`}>View Details</Link>
+
     </ul>
   )
 

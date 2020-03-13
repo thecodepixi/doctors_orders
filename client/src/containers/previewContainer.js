@@ -4,7 +4,7 @@ import { fetchOrders } from '../actions/fetchOrders'
 import Preview from '../components/preview'
 import FollowUp from '../components/followup'
 
-class OrderPreviews extends React.Component {
+class PreviewContainer extends React.Component {
 
   componentDidMount = () => {
     this.props.fetchOrders()
@@ -25,7 +25,7 @@ class OrderPreviews extends React.Component {
 
         { this.props.orders.map( order => {
           return <Preview order={order} key={order.id}/>
-        })}
+        } ) }
 
       </div>
     )
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(OrderPreviews)
+export default connect(mapStateToProps,mapDispatchToProps)(PreviewContainer)

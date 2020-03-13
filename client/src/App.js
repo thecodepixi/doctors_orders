@@ -1,11 +1,13 @@
 import React from 'react';
-import OrderPreviews from './containers/orderPreviews'
+import PreviewContainer from './containers/previewContainer'
+import ReactDom from 'react-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App (){
     return (
-      <div>
-        <OrderPreviews />
-      </div>
+      <Router>
+        <Route exact path="/" render={ routerProps => < OrderPreviews {...routerProps} /> }/>
+      </Router>
     )
 }
 
