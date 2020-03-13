@@ -20,8 +20,8 @@ class OrderPreviews extends React.Component {
 
     return (
       <div>
-        
-        { followUpOrders ? <FollowUp orders={followUpOrders} /> : null }
+
+        { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
 
         { this.props.orders.map( order => {
           return <Preview order={order} key={order.id}/>
