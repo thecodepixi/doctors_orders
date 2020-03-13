@@ -1,19 +1,26 @@
 import React from 'react';
 import Preview from './preview'
 import FollowUp from './followup'
-import { Route } from 'react-router-dom'
-import OrderShow from './order'
+import OrderShow from '../components/order'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
 
-const PreviewList = ({ orders, followUpOrders, match }) => {
+const PreviewList = ({ orders, followUpOrders }) => {
   return (
     <div>
-      { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
+      
+       { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
 
-      { orders.map( order => {
-        return <Preview order={order} key={order.id}/>
-      } ) }
+        { orders.map( order => {
+          return <Preview order={order} key={order.id}/>
+        } ) }
 
-      <Route path={`${match.url}/orders/:id`} render={ routerProps => <OrderShow {...routerProps} orders={orders}/> }/> 
     </div>
   )
 }
