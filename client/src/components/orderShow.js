@@ -18,14 +18,21 @@ class OrderShow extends React.Component {
         },
         follow_up_update: true 
       }
-    }, console.log(this.state))
+    })
+  }
+
+  congrats = () => {
+    setTimeout( () => this.setState({ follow_up_update: null }), 15000)
+    return (
+      <p>Great Job following up with your doctor!</p>
+    )
   }
 
   render() {
     console.log(this.props)
     return (
       <div>
-        { this.state.follow_up_update ? <p>Good Job following up with your doctor! </p> : null }
+        { this.state.follow_up_update ? this.congrats() : null }
         <h2>Doctor's Orders from {this.state.order.appointment_date.split("T")[0]} </h2>
         <hr />
         <p>Doctor: {this.state.order.doctor.name} (Specialty: {this.state.order.doctor.specialty})</p>
