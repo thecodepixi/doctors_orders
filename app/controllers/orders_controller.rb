@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
 
   def update 
     order = Order.find_by(id: params[:id])
-    order.follow_up = (follow_up: params[:follow_up])
+    order.follow_up = params[:follow_up]
     
     if order.save 
       render json: OrderSerializer.new(order).to_serialized_json

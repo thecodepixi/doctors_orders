@@ -2,14 +2,14 @@ import React from 'react';
 import Preview from './preview'
 import FollowUp from './followup'
 
-const PreviewList = ({ orders, followUpOrders }) => {
+const PreviewList = (props) => {
   return (
     <div>
 
-        { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
+        { props.followUpOrders.length > 0 ? <FollowUp orders={props.followUpOrders} /> : null }
 
-        { orders.map( order => {
-          return <Preview order={order} key={order.id}/>
+        { props.orders.map( order => {
+          return <Preview order={order} key={order.id} />
         } ) }
 
     </div>

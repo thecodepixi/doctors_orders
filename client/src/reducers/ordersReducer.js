@@ -24,7 +24,7 @@ export default function ordersReducer(
         let idx = state.orders.indexOf( order => order.id === action.order.id )
         return {
           ...state,
-          orders: [...state.orders.slice[0, idx], action.order, ...state.orders.slice[idx, state.orders.length -1 ]],
+          orders: [...state.orders.slice(0, idx), action.order, ...state.orders.slice(idx, state.orders.length -1 )],
           fetching: false 
         }
       default: 
