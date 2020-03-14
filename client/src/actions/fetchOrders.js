@@ -3,7 +3,7 @@ export function fetchOrders() {
     dispatch({ type: "START_FETCHING_ORDERS" });
     fetch('/orders')
       .then( resp => resp.json())
-      .then( orders => dispatch({ type: "GET_ORDERS", orders}))
+      .then( orders => dispatch({type: "GET_ORDERS", orders}) )
       .catch( error => { 
         console.log(error) 
         return alert(error) })

@@ -12,12 +12,10 @@ class PreviewContainer extends React.Component {
 
   render() {
 
-    const followUpOrders = this.props.orders.filter( order => order.follow_up === true )
-
     return (
       <div>
         <Link to={"/orders/new"}>Click to Add Latest Doctor's Orders</Link>
-        <PreviewList orders={this.props.orders} followUpOrders={followUpOrders} />
+        <PreviewList orders={this.props.orders} followUpOrders={this.props.follow_up_orders} />
       </div>
     )
   }
@@ -25,7 +23,8 @@ class PreviewContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    orders: state.orders 
+    orders: state.orders,
+    follow_up_orders: state.follow_up_orders
   }
 }
 

@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
 
   def index 
     orders = Order.all.order(appointment_date: :desc)
-    render json: OrderSerializer.new(orders).to_serialized_json
+    follow_up_orders = Order.follow_up_orders.order(appointment_date: :desc)
+    render json: { orders: OrderSerializer.new(orders).to_serialized_json, follow_up_orders: OrderSerializer.new(follow_up_orders).to_serialized_json }
   end 
 
   def show 

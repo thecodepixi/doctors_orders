@@ -1,17 +1,19 @@
 export default function ordersReducer(
-  state = { orders: [], fetching: false }, action ) {
+  state = { orders: [], follow_up_orders: [], fetching: false }, action ) {
     console.log(action)
     switch ( action.type ) {
       case "START_FETCHING_ORDERS" : 
         return {
           ...state,
           orders: [...state.orders],
+          follow_up_orders: [...state.follow_up_orders],
           fetching: true 
         }
       case "GET_ORDERS" :
         return {
           ...state,
-          orders: action.orders,
+          orders: action.orders.orders,
+          follow_up_orders: action.orders.follow_up_orders,
           fetching: false 
         }
       case "ADD_NEW_ORDER":

@@ -2,6 +2,7 @@ import React from 'react';
 import Preview from './preview'
 
 const FollowUp = (props) => {
+
   return (
     <div>
       <strong>Follow Up Needed: </strong>

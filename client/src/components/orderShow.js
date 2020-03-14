@@ -6,7 +6,8 @@ import ConfirmFollowUp from './confirmFollowUp'
 class OrderShow extends React.Component {
 
   state = {
-    order: this.props.location.state.order 
+    order: this.props.location.state.order,
+    follow_up_updated: null 
   }
 
   updateOrderState = () => {
@@ -16,15 +17,15 @@ class OrderShow extends React.Component {
           ...prevState.order, 
           follow_up: false 
         },
-        follow_up_update: true 
+        follow_up_updated: true 
       }
     })
   }
 
   congrats = () => {
-    setTimeout( () => this.setState({ follow_up_update: null }), 15000)
+    setTimeout( () => this.setState({ follow_up_updated: null }), 10000)
     return (
-      <p>Great Job following up with your doctor!</p>
+      <p>Great job following up with your doctor!</p>
     )
   }
 
@@ -32,7 +33,7 @@ class OrderShow extends React.Component {
     console.log(this.props)
     return (
       <div>
-        { this.state.follow_up_update ? this.congrats() : null }
+        { this.state.follow_up_updated ? this.congrats() : null }
         <h2>Doctor's Orders from {this.state.order.appointment_date.split("T")[0]} </h2>
         <hr />
         <p>Doctor: {this.state.order.doctor.name} (Specialty: {this.state.order.doctor.specialty})</p>
