@@ -9,6 +9,13 @@ export function addOrder(order) {
      }, 
      body: JSON.stringify(order) })
       .then( resp => resp.json())
-      .then( order => dispatch({ type: "ADD_ORDER", order }))
+      .then( order =>{ 
+        if( order.status === "error" ) {
+          alert( order.errors )
+        } else {
+          dispatch({ type: "ADD_ORDER", order })
+        }
+      })
+      .catch( error => console.log(error))
   }
 }

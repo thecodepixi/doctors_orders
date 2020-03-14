@@ -1,13 +1,13 @@
 import React from 'react';
 
 let initialState = {
-  doctor_name: "",
-  doctor_specialty: "",
-  appointment_date: "",
-  appointment_type: "",
-  test_results: "",
-  treatment_info: "",
-  follow_up: "false"
+  doctor_name: null,
+  doctor_specialty: null,
+  appointment_date: null,
+  appointment_type: null,
+  test_results: null,
+  treatment_info: null,
+  follow_up: null
 }
 
 class OrderForm extends React.Component {

@@ -13,20 +13,22 @@ class OrdersController < ApplicationController
   def create 
     order = Order.new(
       appointment_date: params[:appointment_date],
-      appointment_type: params[:appointment_type]
+      appointment_type: params[:appointment_type],
+      test_results: params[:test_results],
+      treatment_info: params[:treatment_info],
+      follow_up: params[:follow_up]
     )
-    params[:test_results].blank? ? nil : order.test_results = params[:test_results]
-    params[:treatment_info].blank? ? nil : order.treatment_info = params[:treatment_info]
-    params[:follow_up] ? order.follow_up = params[:follow_up] : nil 
-
-    doctor = Doctor.find_or_create_by(name: params[:doctor_name].strip.downcase, specialty: params[:doctor_specialty].strip.downcase)
+    # check if doctor info has been provided and add doctor if included
+    if params[:doctor_name] && params[:doctor_specialty]
+      doctor = Doctor.find_or_create_by(name: params[:doctor_name].strip.downcase, specialty: params[:doctor_specialty].strip.downcase)
     
-    order.doctor = doctor 
+      order.doctor = doctor 
+    end 
     
     if order.save 
       render json: OrderSerializer.new(order).to_serialized_json
     else 
-      render json: { error_message: order.errors.full_messages }
+      render json: { status: "error", errors: order.errors.full_messages }, status: 422
     end 
   end 
 
