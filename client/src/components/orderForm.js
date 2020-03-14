@@ -49,7 +49,7 @@ class OrderForm extends React.Component {
         </p>
         <p>
           <label id="appointment_type">Appointment Type: </label>
-          <select id="appointment_type" name="appointment_type" onChange={this.handleChange}>
+          <select id="appointment_type" name="appointment_type" onChange={this.handleChange} >
             <option value=""></option>
             <option value="sick visit">Sick Visit</option>
             <option value="checkup">Checkup</option>
