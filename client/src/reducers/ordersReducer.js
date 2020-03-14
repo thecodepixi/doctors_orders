@@ -20,6 +20,13 @@ export default function ordersReducer(
           orders: [ ...state.orders.concat(action.order) ],
           fetching: false
         }
+      case "UPDATE_ORDER": 
+        let idx = state.orders.indexOf( order => order.id === action.order.id )
+        return {
+          ...state,
+          orders: [...state.orders.slice[0, idx], action.order, ...state.orders.slice[idx, state.orders.length -1 ]],
+          fetching: false 
+        }
       default: 
         return state 
     }

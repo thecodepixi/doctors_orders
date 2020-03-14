@@ -1,6 +1,5 @@
 export function addOrder(order) {
   return(dispatch) => {
-    dispatch({type: "START_FETCHING_ORDERS"});
     fetch("/orders", {
       method: 'POST',
       headers: {

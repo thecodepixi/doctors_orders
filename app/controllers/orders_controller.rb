@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   end 
 
   def create 
+    # new order object from order details 
     order = Order.new(
       appointment_date: params[:appointment_date],
       appointment_type: params[:appointment_type],
@@ -24,12 +25,26 @@ class OrdersController < ApplicationController
     
       order.doctor = doctor 
     end 
+    # if order saves, send the newly created order info back to front end
+    if order.save 
+      render json: OrderSerializer.new(order).to_serialized_json
+    else 
+      # if order does not save, send back an error message
+      render json: { status: "error", errors: order.errors.full_messages }, status: 422
+    end 
+  end 
+
+  def update 
+    order = Order.find_by(id: params[:id])
+    order.follow_up = (follow_up: params[:follow_up])
     
     if order.save 
       render json: OrderSerializer.new(order).to_serialized_json
     else 
+      # if order does not save, send back an error message
       render json: { status: "error", errors: order.errors.full_messages }, status: 422
     end 
+
   end 
 
 end

@@ -34,3 +34,4 @@
 - Use Redux to manage state (w/ thunk for async)
 
 - Decide on CSS library to incorporate (check for React integration)
+- Work on updating `follow_up` status on orders 
