@@ -13,11 +13,12 @@ class OrdersController < ApplicationController
   def create 
     order = Order.new(
       appointment_date: params[:appointment_date],
-      appointment_type: params[:appointment_type],
-      test_results: params[:test_results].strip,
-      treatment_info: params[:treatment_info].strip,
-      follow_up: params[:follow_up],
+      appointment_type: params[:appointment_type]
     )
+    params[:test_results].blank? ? nil : order.test_results = params[:test_results]
+    params[:treatment_info].blank? ? nil : order.treatment_info = params[:treatment_info]
+    params[:follow_up] ? order.follow_up = params[:follow_up] : nil 
+
     doctor = Doctor.find_or_create_by(name: params[:doctor_name].strip.downcase, specialty: params[:doctor_specialty].strip.downcase)
     
     order.doctor = doctor 
