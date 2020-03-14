@@ -14,6 +14,12 @@ export default function ordersReducer(
           orders: action.orders,
           fetching: false 
         }
+      case "ADD_NEW_ORDER":
+        return {
+          ...state,
+          orders: [ ...state.orders.concat(action.order) ],
+          fetching: false
+        }
       default: 
         return state 
     }

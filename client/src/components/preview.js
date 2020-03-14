@@ -6,12 +6,8 @@ const Preview = ({ order }) => {
       <ul>
       <li>Appoinment Date: {order.appointment_date.split("T")[0]}</li>
       <li>Doctor Name: {order.doctor.name} ({order.doctor.specialty})</li>
-      <Link to={{
-        pathname: `/orders/${order.id}`,
-        state: { order }
-      }} key={order.id} > See Details </Link>
+      <Link to={{ pathname: `/orders/${order.id}`, state: { order }}} > See Details </Link>
       </ul>
-
   )
 }
 

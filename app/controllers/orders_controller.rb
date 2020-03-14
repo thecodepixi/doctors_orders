@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index 
-    orders = Order.all
+    orders = Order.all.order(appointment_date: :desc)
     render json: OrderSerializer.new(orders).to_serialized_json
   end 
 
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       treatment_info: params[:treatment_info].strip,
       follow_up: params[:follow_up],
     )
-    doctor = Doctor.find_or_create_by(name: params[:doctor_name].strip.downcase, specialty: params[:specialty].strip.downcase)
+    doctor = Doctor.find_or_create_by(name: params[:doctor_name].strip.downcase, specialty: params[:doctor_specialty].strip.downcase)
     
     order.doctor = doctor 
     

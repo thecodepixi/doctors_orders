@@ -33,5 +33,4 @@
     - nav bar?? *( this might be unnecessary )*
 - Use Redux to manage state (w/ thunk for async)
 
-To Do, 4pm 3/12: 
 - Decide on CSS library to incorporate (check for React integration)
