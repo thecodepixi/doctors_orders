@@ -23,14 +23,12 @@ class OrderShow extends React.Component {
   }
 
   congrats = () => {
-    setTimeout( () => this.setState({ follow_up_updated: null }), 10000)
     return (
-      <p>Great job following up with your doctor!</p>
+      <p>Great job following up with your doctor! </p>
     )
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         { this.state.follow_up_updated ? this.congrats() : null }
@@ -41,7 +39,7 @@ class OrderShow extends React.Component {
         <p>Test Results: {this.state.order.test_results}</p>
         <p>Treatment Notes: {this.state.order.treatment_info}</p>
         <p>Follow Up Needed? { this.state.order.follow_up ? "Yes": "No" }</p> 
-        { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} orderId={this.state.order.id} updateOrderState={this.updateOrderState} /> : null }
+        { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
       </div>
     )
   }

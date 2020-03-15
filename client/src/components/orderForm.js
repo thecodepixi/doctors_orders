@@ -1,24 +1,16 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Redirect
-} from 'react-router-dom'
-
-let initialState = {
-  doctor_name: null,
-  doctor_specialty: null,
-  appointment_date: null,
-  appointment_type: null,
-  test_results: null,
-  treatment_info: null,
-  follow_up: null,
-  submitted: false 
-}
+import { Redirect } from 'react-router-dom'
 
 class OrderForm extends React.Component {
 
   state = {
-    ...initialState
+    doctor_name: undefined,
+    doctor_specialty: undefined,
+    appointment_date: undefined,
+    appointment_type: undefined,
+    test_results: undefined,
+    treatment_info: undefined,
+    follow_up: undefined
   }
 
   handleChange = event => {
@@ -31,18 +23,20 @@ class OrderForm extends React.Component {
     event.preventDefault();
     this.props.addOrder(this.state)
     this.setState({
-     ...initialState,
-     submitted: true 
-    })
+        submitted: true 
+      })
   }
   
   render() {
+    if( this.state.submitted ) {
+      return <Redirect to={"/"} />
+    } 
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
         <p>
           <label id="appointment_date">Date: </label>
-          <input type="date" name="appointment_date" id="appointment_date" onChange={this.handleChange}/>
+          <input type="date" name="appointment_date" id="appointment_date" onChange={this.handleChange}  />
         </p>
         <p>
           <label id="doctor_name">Doctor's Name: </label>
