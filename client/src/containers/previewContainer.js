@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchOrders } from '../actions/fetchOrders'
 import PreviewList from '../components/previewList'
+import FollowUp from '../components/followup'
 
 class PreviewContainer extends React.Component {
 
@@ -15,6 +16,7 @@ class PreviewContainer extends React.Component {
     return (
       <div>
         <Link to={"/orders/new"}>Click to Add Latest Doctor's Orders</Link>
+        { this.props.follow_up_orders.length > 0 ? <FollowUp orders={this.props.follow_up_orders} /> : null }
         <PreviewList orders={this.props.orders} followUpOrders={this.props.follow_up_orders} />
       </div>
     )

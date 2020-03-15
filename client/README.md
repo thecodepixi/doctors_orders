@@ -30,8 +30,10 @@
     - single order (for the /:id route)
     - new order form
     - Follow-Up alert
-    - nav bar?? *( this might be unnecessary )*
+    - nav bar??
 - Use Redux to manage state (w/ thunk for async)
 
+To Do: 
 - Decide on CSS library to incorporate (check for React integration)
-- Figure out why navigating back after updating a follow_up throws error 
+- Add NavBar for navigation (links to Home and New)
+- Figure out how to conditionally show FollowUp container component (still shows when no follow ups) 
