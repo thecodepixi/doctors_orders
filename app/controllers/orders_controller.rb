@@ -1,3 +1,5 @@
+require 'pry'
+
 class OrdersController < ApplicationController
 
   def index 
@@ -48,9 +50,9 @@ class OrdersController < ApplicationController
   end 
 
   def destroy 
-    order = Order.find_by(id: params[:id])
-    order.destroy 
-      
+    order = Order.find(params[:id])
+    order.destroy
+
     render json: OrderSerializer.new(order).to_serialized_json
   end 
 

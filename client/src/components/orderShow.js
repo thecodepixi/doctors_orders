@@ -25,7 +25,7 @@ class OrderShow extends React.Component {
 
   deleteOrder = () => {
     this.props.deleteOrder(this.state.order)
-    this.props.history.push("/")
+    this.props.history.goBack()
   }
 
   congrats = () => {

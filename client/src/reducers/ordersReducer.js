@@ -1,6 +1,7 @@
 export default function ordersReducer(
   state = { orders: [], follow_up_orders: [], fetching: false }, action ) {
     console.log(action)
+    let idx;
     switch ( action.type ) {
       case "START_FETCHING_ORDERS" : 
         return {
@@ -19,23 +20,21 @@ export default function ordersReducer(
       case "ADD_NEW_ORDER":
         return {
           ...state,
-          orders: state.orders.concat(action.order) ,
-          fetching: false
+          orders: state.orders.concat(action.order)
         }
       case "UPDATE_ORDER": 
-        let idx = state.orders.indexOf( order => order.id === action.order.id )
+        idx = state.orders.indexOf( order => order.id === action.order.id )
         return {
           ...state,
           orders: [...state.orders.slice(0, idx), action.order, ...state.orders.slice(idx, state.orders.length -1 )],
-          follow_up_orders : [...state.follow_up_orders.filter( order => order.id !== action.order.id)],
-          fetching: false 
+          follow_up_orders : [...state.follow_up_orders.filter( order => order.id !== action.order.id)]
         }
       case "DELETE_ORDER": 
+        idx = state.orders.indexOf( order => order.id === action.order.id )
         return {
           ...state,
-          orders: [...state.orders.filter( order => order.id !== action.order.id )],
-          follow_up_orders: [ ...state.follow_up_orders.filter( order => order.id !== action.order.id)],
-          fetching: false
+          orders: [...state.orders.splice(idx,1)],
+          follow_up_orders:[...state.follow_up_orders.filter( order => order.id !== action.order.id)]
         }
       default: 
         return state 
