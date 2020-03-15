@@ -41,4 +41,3 @@ To Do:
 - Turn FollowUp component into modal/alert
 - turn "congrats" on ConfirmFollowUp into modal/alert
 - turn previews into cards (ideally, they should tile across screen)
-- weird stuff happening. reducer suddenly not working. sleep on it. 
