@@ -19,7 +19,7 @@ export default function ordersReducer(
       case "ADD_NEW_ORDER":
         return {
           ...state,
-          orders: [ ...state.orders.concat(action.order) ],
+          orders: state.orders.concat(action.order) ,
           fetching: false
         }
       case "UPDATE_ORDER": 
@@ -34,7 +34,7 @@ export default function ordersReducer(
         return {
           ...state,
           orders: [...state.orders.filter( order => order.id !== action.order.id )],
-          follow_up_orders:[ ...state.follow_up_orders.filter( order => order.id !== action.order.id)],
+          follow_up_orders: [ ...state.follow_up_orders.filter( order => order.id !== action.order.id)],
           fetching: false
         }
       default: 
