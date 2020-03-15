@@ -1,10 +1,28 @@
 import React from 'react';
-import Root from './Root'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import PreviewContainer from './containers/previewContainer'
+import OrderFormContainer from './containers/orderFormContainer'
+import OrderShow from './components/orderShow'
 
-function App (){
-    return (
-     <Root />
+class Root extends React.Component {
+  
+  render(){
+    return(
+      <div>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={PreviewContainer} />
+            <Route exact path="/orders/new" component={OrderFormContainer} />
+            <Route to="/orders/:orderId" component={OrderShow} />
+          </Switch>
+        </Router>
+      </div>  
     )
+  }
 }
 
-export default App;
+export default Root
