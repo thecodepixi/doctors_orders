@@ -44,8 +44,14 @@ class OrdersController < ApplicationController
     else 
       # if order does not save, send back an error message
       render json: { status: "error", errors: order.errors.full_messages }, status: 422
-    end 
+    end
+  end 
 
+  def destroy 
+    order = Order.find_by(id: params[:id])
+    order.destroy 
+      
+    render json: OrderSerializer.new(order).to_serialized_json
   end 
 
 end

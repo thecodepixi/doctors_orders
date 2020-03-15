@@ -30,6 +30,13 @@ export default function ordersReducer(
           follow_up_orders : state.follow_up_orders.filter( order => order.id !== action.order.id),
           fetching: false 
         }
+      case "DELETE_ORDER": 
+        return {
+          ...state,
+          orders: state.orders.filter( order => order.id !== action.order.id ),
+          follow_up_orders: state.follow_up_orders.filter( order => order.id !== action.order.id),
+          fetching: false
+        }
       default: 
         return state 
     }

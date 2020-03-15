@@ -1,5 +1,6 @@
 import React from 'react';
 import { updateOrder } from '../actions/updateOrder'
+import { deleteOrder } from '../actions/deleteOrder'
 import { connect } from 'react-redux'
 import ConfirmFollowUp from './confirmFollowUp'
 
@@ -22,6 +23,11 @@ class OrderShow extends React.Component {
     })
   }
 
+  deleteOrder = () => {
+    this.props.deleteOrder(this.state.order)
+    this.props.history.push("/")
+  }
+
   congrats = () => {
     return (
       <p>Great job following up with your doctor! </p>
@@ -29,10 +35,13 @@ class OrderShow extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         { this.state.follow_up_updated ? this.congrats() : null }
-        <h2>Doctor's Orders from {this.state.order.appointment_date.split("T")[0]} </h2>
+        <header>
+           <h2>Doctor's Orders from {this.state.order.appointment_date.split("T")[0]} <button onClick={this.deleteOrder} > DELETE </button> </h2>
+        </header>
         <hr />
         <p>Doctor: {this.state.order.doctor.name} (Specialty: {this.state.order.doctor.specialty})</p>
         <p>Appointment Type: {this.state.order.appointment_type}</p>
@@ -47,7 +56,8 @@ class OrderShow extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateOrder: order => dispatch(updateOrder(order))
+    updateOrder: order => dispatch(updateOrder(order)),
+    deleteOrder: order => dispatch(deleteOrder(order))
   }
 }
 
