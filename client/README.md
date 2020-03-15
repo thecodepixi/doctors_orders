@@ -36,4 +36,6 @@
 To Do: 
 - Decide on CSS library to incorporate (check for React integration)
 - Add NavBar for navigation (links to Home and New)
-- Figure out how to conditionally show FollowUp container component (still shows when no follow ups) 
+- Turn FollowUp component into modal/alert
+- turn "congrats" on ConfirmFollowUp into modal/alert
+- turn previews into cards (ideally, they should tile across screen)
