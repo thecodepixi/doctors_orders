@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect
+} from 'react-router-dom'
 
 let initialState = {
   doctor_name: null,
@@ -7,13 +11,14 @@ let initialState = {
   appointment_type: null,
   test_results: null,
   treatment_info: null,
-  follow_up: null
+  follow_up: null,
+  submitted: false 
 }
 
 class OrderForm extends React.Component {
 
   state = {
-    initialState
+    ...initialState
   }
 
   handleChange = event => {
@@ -24,10 +29,10 @@ class OrderForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
     this.props.addOrder(this.state)
     this.setState({
-      initialState
+     ...initialState,
+     submitted: true 
     })
   }
   

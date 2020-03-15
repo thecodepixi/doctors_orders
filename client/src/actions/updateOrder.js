@@ -9,6 +9,6 @@ export function updateOrder(order) {
      body: JSON.stringify({ id: order.id, follow_up: false })
     })
     .then( resp => resp.json())
-    .then( order => dispatch({type: "UPDATE_ORDER"}, order))
+    .then( order => dispatch({type: "UPDATE_ORDER", order}) )
   } 
 }

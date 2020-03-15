@@ -27,6 +27,7 @@ export default function ordersReducer(
         return {
           ...state,
           orders: [...state.orders.slice(0, idx), action.order, ...state.orders.slice(idx, state.orders.length -1 )],
+          follow_up_orders : state.follow_up_orders.filter( order => order.id !== action.order.id),
           fetching: false 
         }
       default: 

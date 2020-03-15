@@ -15,9 +15,9 @@ class Root extends React.Component {
       <div>
         <Router>
           <Switch>
-            <Route exact path='/' component={PreviewContainer} />
+            <Route exact path="/" component={PreviewContainer} />
             <Route exact path="/orders/new" component={OrderFormContainer} />
-            <Route path="/orders/:orderId" component={OrderShow} />
+            <Route exact path="/orders/:orderId" component={OrderShow} />
           </Switch>
         </Router>
       </div>  
