@@ -3,6 +3,7 @@ import { updateOrder } from '../actions/updateOrder'
 import { deleteOrder } from '../actions/deleteOrder'
 import { connect } from 'react-redux'
 import ConfirmFollowUp from './confirmFollowUp'
+import { Button, Icon, Container, Header } from 'semantic-ui-react'
 
 class OrderShow extends React.Component {
 
@@ -37,11 +38,17 @@ class OrderShow extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <div>
+      <Container>
         { this.state.follow_up_updated ? this.congrats() : null }
-        <header>
-           <h2>Doctor's Orders from {this.state.order.appointment_date.split("T")[0]} <button onClick={this.deleteOrder} > DELETE </button> </h2>
-        </header>
+        <Header as="h2">
+           Doctor's Orders from {this.state.order.appointment_date.split("T")[0]}
+          <Button onClick={this.deleteOrder} animated="fade" > 
+            <Button.Content visible>
+              <Icon name="close"/>
+            </Button.Content>
+            <Button.Content hidden> DELETE </Button.Content>
+          </Button> 
+        </Header>
         <hr />
         <p>Doctor: {this.state.order.doctor.name} (Specialty: {this.state.order.doctor.specialty})</p>
         <p>Appointment Type: {this.state.order.appointment_type}</p>
@@ -49,7 +56,7 @@ class OrderShow extends React.Component {
         <p>Treatment Notes: {this.state.order.treatment_info}</p>
         <p>Follow Up Needed? { this.state.order.follow_up ? "Yes": "No" }</p> 
         { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
-      </div>
+      </Container>
     )
   }
 }

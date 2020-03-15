@@ -35,6 +35,8 @@
 
 To Do: 
 - Decide on CSS library to incorporate (check for React integration)
+  - Using Semantic UI!
+- Return doctor name and specialty titleized (should this be done in doctors model? in serializer? with CSS?)
 - Add NavBar for navigation (links to Home and New)
 - Turn FollowUp component into modal/alert
 - turn "congrats" on ConfirmFollowUp into modal/alert
