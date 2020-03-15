@@ -8,7 +8,7 @@ import PreviewContainer from './containers/previewContainer'
 import OrderFormContainer from './containers/orderFormContainer'
 import OrderShow from './components/orderShow'
 
-class Root extends React.Component {
+class App extends React.Component {
   
   render(){
     return(
@@ -25,4 +25,4 @@ class Root extends React.Component {
   }
 }
 
-export default Root
+export default App
