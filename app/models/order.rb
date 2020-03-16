@@ -7,4 +7,5 @@ class Order < ApplicationRecord
   def self.follow_up_orders 
     Order.where("follow_up = ?", true)
   end 
+
 end

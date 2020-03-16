@@ -4,7 +4,6 @@ import { fetchOrders } from '../actions/fetchOrders'
 import PreviewList from '../components/previewList'
 import FollowUp from '../components/followup'
 import { Container } from 'semantic-ui-react'
-
 class PreviewContainer extends React.Component {
 
   componentDidMount = () => {

@@ -1,24 +1,23 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Grid, Card } from 'semantic-ui-react'
-
-function formattedDate(date) {
-  let splitDate = date.split("T")[0].split("-")
-  let month = splitDate[1]
-  let day = splitDate[2]
-  let year = splitDate[0]
-  return { day: day, month: month, year: year}
-}
-
+import { Grid, Card, Icon } from 'semantic-ui-react'
+import Moment from 'react-moment'
+ 
 const Preview = ({ order }) => {
-  let date = formattedDate(order.appointment_date)
   return (
       <Grid.Column>
-        <Card>
+        <Card color="teal">
           <Card.Content>
-            <Card.Header>{date.month} / {date.day} / {date.year}</Card.Header>
-            <Card.Meta> {order.doctor.name} ({order.doctor.specialty})</Card.Meta>
-            <Card.Description><Link to={{ pathname: `/orders/${order.id}`, state: { order }}} > See Details </Link></Card.Description>
+            
+            <Card.Header><Moment format="dddd, MMMM DD, YYYY">{ order.appointment_date }</Moment></Card.Header>
+            <Card.Meta> 
+              <p>{order.doctor.name} ({order.doctor.specialty})</p> 
+              <p>{order.appointment_type}</p>
+            </Card.Meta>
+          </Card.Content>
+          <Card.Content extra>
+          <Icon name="clipboard outline"/>
+          <Link to={{ pathname: `/orders/${order.id}`, state: { order }}} > See Details </Link>
           </Card.Content>
         </Card>
       </Grid.Column>

@@ -3,6 +3,7 @@ import { updateOrder } from '../actions/updateOrder'
 import { deleteOrder } from '../actions/deleteOrder'
 import { connect } from 'react-redux'
 import ConfirmFollowUp from './confirmFollowUp'
+import Moment from 'react-moment'
 import { Button, Icon, Container, Header, Item } from 'semantic-ui-react'
 
 class OrderShow extends React.Component {
@@ -10,14 +11,6 @@ class OrderShow extends React.Component {
   state = {
     order: this.props.location.state.order,
     follow_up_updated: null 
-  }
-
-  formattedDate = (date) => {
-    let splitDate = date.split("T")[0].split("-")
-    let month = splitDate[1]
-    let day = splitDate[2]
-    let year = splitDate[0]
-    return { day: day, month: month, year: year}
   }
 
   updateOrderState = () => {
@@ -45,7 +38,7 @@ class OrderShow extends React.Component {
 
   render() {
     console.log(this.props)
-    let order_date = this.formattedDate(this.state.order.appointment_date)
+
     return (
       <Container textAlign="center">
         { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
@@ -54,7 +47,7 @@ class OrderShow extends React.Component {
           <Item>
           <Item.Content>
             <Item.Header as="h2">
-           Doctor's Orders from {order_date.month} / {order_date.day} / {order_date.year}
+            Doctor's Orders from <Moment format="dddd, MMMM DD, YYYY">{this.state.order.appointment_date}</Moment>
           
         </Item.Header>
         <Button onClick={this.deleteOrder} animated floated="right" icon > 

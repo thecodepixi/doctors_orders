@@ -8,8 +8,8 @@ const NavBar = () => {
       <Menu.Item name="home">
         <Link to={"/"}><Icon name="doctor" size="big"/></Link>
       </Menu.Item>
-      <Menu.Item name="orderForm">
-        <Link to={"/orders/new"}>
+      <Menu.Item name="orderForm" position="right">
+        <Link to={"/orders/new"} >
           <Icon.Group size="large">
             <Icon name="clipboard outline"/> 
             <Icon corner="bottom right" name="plus"/>
