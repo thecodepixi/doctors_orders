@@ -4,7 +4,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 const PreviewList = (props) => {
   return (
-    <Grid centered columns={4} stackable>
+    <Grid columns={4} stackable doubling>
 
         { props.orders.map( order => {
           return <Preview order={order} key={order.id} />
