@@ -31,7 +31,7 @@ class OrderShow extends React.Component {
 
   congrats = () => {
     return (
-      <p>Great job following up with your doctor! </p>
+      <Header as="h3" color="teal">Great job following up with your doctor! </Header>
     )
   }
 
@@ -39,14 +39,15 @@ class OrderShow extends React.Component {
     console.log(this.props)
     return (
       <Container>
+        { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
         { this.state.follow_up_updated ? this.congrats() : null }
         <Header as="h2">
            Doctor's Orders from {this.state.order.appointment_date.split("T")[0]}
-          <Button onClick={this.deleteOrder} animated="fade" > 
+          <Button onClick={this.deleteOrder} animated floated="right" icon > 
             <Button.Content visible>
               <Icon name="close"/>
             </Button.Content>
-            <Button.Content hidden> DELETE </Button.Content>
+            <Button.Content hidden>delete</Button.Content>
           </Button> 
         </Header>
         <hr />
@@ -55,7 +56,7 @@ class OrderShow extends React.Component {
         <p>Test Results: {this.state.order.test_results}</p>
         <p>Treatment Notes: {this.state.order.treatment_info}</p>
         <p>Follow Up Needed? { this.state.order.follow_up ? "Yes": "No" }</p> 
-        { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
+        
       </Container>
     )
   }

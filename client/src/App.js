@@ -7,6 +7,7 @@ import {
 import PreviewContainer from './containers/previewContainer'
 import OrderFormContainer from './containers/orderFormContainer'
 import OrderShow from './components/orderShow'
+import NavBar from './components/navBar'
 
 class App extends React.Component {
   
@@ -14,6 +15,7 @@ class App extends React.Component {
     return(
       <div>
         <Router>
+          <NavBar />
           <Switch>
             <Route exact path="/" component={PreviewContainer} />
             <Route exact path="/orders/new" component={OrderFormContainer} />
