@@ -1,15 +1,13 @@
 import React from 'react';
 import Preview from './preview'
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 const PreviewList = (props) => {
   return (
-    <Grid columns={4} stackable doubling>
-
+    <Grid columns={3} stackable doubling>
         { props.orders.map( order => {
           return <Preview order={order} key={order.id} />
         } ) }
-
     </Grid>
   )
 }

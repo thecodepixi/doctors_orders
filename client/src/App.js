@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 import PreviewContainer from './containers/previewContainer'
 import OrderFormContainer from './containers/orderFormContainer'
@@ -18,6 +18,7 @@ class App extends React.Component {
           <NavBar />
           <Switch>
             <Route exact path="/" component={PreviewContainer} />
+            <Route exact path="/orders" component={PreviewContainer} />
             <Route exact path="/orders/new" component={OrderFormContainer} />
             <Route to="/orders/:orderId" component={OrderShow} />
           </Switch>

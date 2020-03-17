@@ -37,4 +37,3 @@ To Do:
 - Decide on CSS library to incorporate (check for React integration)
   - Using Semantic UI!
 - Return doctor name and specialty titleized (should this be done in doctors model? in serializer? with CSS?)
-- Move date formatting to controller

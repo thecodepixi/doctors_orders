@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, Icon, Header, Divider} from 'semantic-ui-react'
+import { Checkbox, Header, Divider} from 'semantic-ui-react'
 
 const ConfirmFollowUp = props => {
 
@@ -13,7 +13,7 @@ const ConfirmFollowUp = props => {
       <form>
       <Header as="h3">
         <Checkbox value="false" name="follow_up" onClick={handleClick} color="teal" label="" />
-        I followed up with my doctor! 🎉
+        I followed up with my doctor! <span role="img" aria-label="emoji party blower">🎉</span> 
       </Header>
       <Divider />
     </form>

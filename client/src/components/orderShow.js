@@ -32,13 +32,11 @@ class OrderShow extends React.Component {
 
   congrats = () => {
     return (
-      <Header as="h3" color="teal">You're doing amazing, sweetie! 🎉💕</Header>
+      <Header as="h3" color="teal">You're doing amazing, sweetie!<span role="img" aria-label="emoji party blower and hearts!">🎉💕</span> </Header>
     )
   }
 
-  render() {
-    console.log(this.props)
-
+  render(){
     return (
       <Container textAlign="center">
         { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
