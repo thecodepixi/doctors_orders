@@ -51,7 +51,7 @@ class OrderShow extends React.Component {
           <Item>
           <Item.Content>
             <Item.Header as="h2">
-            Doctor's Orders from <Moment format="dddd, LL">{this.state.order.appointment_date}</Moment>
+            Doctor's Orders from <Moment format="dddd, LL">{this.state.order.appointment_date.split("T")[0]}</Moment>
           
         </Item.Header>
         <Button onClick={this.deleteOrder} animated floated="right" icon > 
