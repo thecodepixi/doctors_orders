@@ -7,7 +7,9 @@ import { Container } from 'semantic-ui-react'
 class PreviewContainer extends React.Component {
 
   componentDidMount = () => {
-    this.props.fetchOrders()
+    if ( this.props.orders.length === 0 ) {
+      this.props.fetchOrders()
+    }
   }
 
   render() {

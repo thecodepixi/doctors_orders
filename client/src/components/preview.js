@@ -9,10 +9,10 @@ const Preview = ({ order }) => {
         <Card color="teal">
           <Card.Content>
             
-            <Card.Header><Moment format="dddd, MMMM DD, YYYY">{ order.appointment_date }</Moment></Card.Header>
+            <Card.Header><Moment format="dddd, LL">{ order.appointment_date }</Moment></Card.Header>
             <Card.Meta> 
-              <p>{order.doctor.name} ({order.doctor.specialty})</p> 
-              <p>{order.appointment_type}</p>
+              <p className="titlecase">{order.doctor.name} ({order.doctor.specialty})</p> 
+              <p className="titlecase">{order.appointment_type}</p>
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>

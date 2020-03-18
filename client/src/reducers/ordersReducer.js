@@ -17,10 +17,19 @@ export default function ordersReducer(
           follow_up_orders: action.orders.follow_up_orders,
           fetching: false 
         }
-      case "ADD_NEW_ORDER":
-        return {
-          ...state,
-          orders: state.orders.concat(action.order)
+      case "ADD_ORDER":
+        console.log(action.order)
+        if ( action.order.follow_up ) {
+          return {
+            ...state,
+            orders: state.orders.concat(action.order),
+            follow_up_orders: state.follow_up_orders.concat(action.order)
+          }
+        } else {
+          return {
+            ...state,
+            orders: state.orders.concat(action.order)
+          }
         }
       case "UPDATE_ORDER": 
         idx = state.orders.indexOf( order => order.id === action.order.id )
@@ -30,11 +39,10 @@ export default function ordersReducer(
           follow_up_orders : [...state.follow_up_orders.splice(idx,1)]
         }
       case "DELETE_ORDER": 
-        idx = state.orders.indexOf( order => order.id === action.order.id )
         return {
           ...state,
-          orders: [...state.orders.splice(idx,1)],
-          follow_up_orders:[...state.follow_up_orders.filter( order => order.id !== action.order.id)]
+          orders: state.orders.filter( order => order.id !== action.order.id),
+          follow_up_orders: state.follow_up_orders.filter( order => order.id !== action.order.id)
         }
       default: 
         return state 

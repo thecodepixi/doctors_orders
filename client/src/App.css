@@ -3,5 +3,9 @@
 }
 
 .order-show {
-  padding-top: 20vh;
+  padding-top: 5vh;
+}
+
+.titlecase {
+  text-transform: capitalize;
 }

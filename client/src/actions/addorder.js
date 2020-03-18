@@ -1,4 +1,4 @@
-export function addOrder(order) {
+export function addOrder(newOrder) {
   return(dispatch) => {
     fetch("/orders", {
       method: 'POST',
@@ -6,9 +6,9 @@ export function addOrder(order) {
         "Content-Type": "application/json",
         "Accept": "application/json"
      }, 
-     body: JSON.stringify(order) })
+     body: JSON.stringify(newOrder) })
       .then( resp => resp.json())
-      .then( order =>{ 
+      .then( order => { 
         if( order.status === "error" ) {
           alert( order.errors )
         } else {

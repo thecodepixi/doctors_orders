@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def create 
     # new order object from order details 
     order = Order.new(
-      appointment_date: params[:appointment_date],
+      appointment_date: params[:appointment_date].to_datetime,
       appointment_type: params[:appointment_type],
       test_results: params[:test_results],
       treatment_info: params[:treatment_info],

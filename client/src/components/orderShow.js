@@ -5,12 +5,13 @@ import { connect } from 'react-redux'
 import ConfirmFollowUp from './confirmFollowUp'
 import Moment from 'react-moment'
 import { Button, Icon, Container, Header, Item } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 class OrderShow extends React.Component {
 
   state = {
     order: this.props.location.state.order,
-    follow_up_updated: null 
+    follow_up_updated: null
   }
 
   updateOrderState = () => {
@@ -27,7 +28,9 @@ class OrderShow extends React.Component {
 
   deleteOrder = () => {
     this.props.deleteOrder(this.state.order)
-    this.props.history.goBack()
+    this.setState({
+      deleted: true 
+    })
   }
 
   congrats = () => {
@@ -37,6 +40,9 @@ class OrderShow extends React.Component {
   }
 
   render(){
+    if ( this.state.deleted ) {
+      return <Redirect to="/" />
+    }
     return (
       <Container textAlign="center">
         { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
@@ -45,7 +51,7 @@ class OrderShow extends React.Component {
           <Item>
           <Item.Content>
             <Item.Header as="h2">
-            Doctor's Orders from <Moment format="dddd, MMMM DD, YYYY">{this.state.order.appointment_date}</Moment>
+            Doctor's Orders from <Moment format="dddd, LL">{this.state.order.appointment_date}</Moment>
           
         </Item.Header>
         <Button onClick={this.deleteOrder} animated floated="right" icon > 
@@ -57,11 +63,13 @@ class OrderShow extends React.Component {
         <hr />
         
         <Item.Description>
-          <p><strong>Doctor:</strong> {this.state.order.doctor.name}</p>
-          <p><strong>Specialty:</strong> {this.state.order.doctor.specialty} </p>
-          <p><strong>Appointment Type:</strong> {this.state.order.appointment_type}</p>
-          <p><strong>Test Results:</strong> {this.state.order.test_results}</p>
-          <p><strong>Treatment Notes:</strong> {this.state.order.treatment_info}</p>
+          <p className="titlecase"><strong>Doctor:</strong> {this.state.order.doctor.name}</p>
+          <p className="titlecase"><strong>Specialty:</strong> {this.state.order.doctor.specialty} </p>
+          <p className="titlecase"><strong>Appointment Type:</strong> {this.state.order.appointment_type}</p>
+          <p><strong>Test Results:</strong> </p>
+          <p>{this.state.order.test_results}</p>
+          <p><strong>Treatment Notes:</strong> </p>
+          <p>{this.state.order.treatment_info}</p>
         </Item.Description>
         <Item.Extra>
           { this.state.order.follow_up ? "Follow Up Needed": null } 

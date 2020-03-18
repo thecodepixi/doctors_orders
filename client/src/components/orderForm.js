@@ -23,16 +23,11 @@ class OrderForm extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addOrder(this.state)
-    this.setState({
-        submitted: true 
-      })
+    this.props.history.push("/")
   }
   
   render() {
-    if( this.state.submitted ) {
-      return <Redirect to={"/"} />
-    } 
-    return (
+    return ( 
     <Container>
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>

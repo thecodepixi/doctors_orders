@@ -8,6 +8,7 @@ import PreviewContainer from './containers/previewContainer'
 import OrderFormContainer from './containers/orderFormContainer'
 import OrderShow from './components/orderShow'
 import NavBar from './components/navBar'
+import './App.css'
 
 class App extends React.Component {
   

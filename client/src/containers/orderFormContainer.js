@@ -8,7 +8,7 @@ class OrderFormContainer extends React.Component {
   render(){
     return(
       <div>
-        <OrderForm addOrder={this.props.addOrder} />
+        <OrderForm addOrder={this.props.addOrder} history={this.props.history}/>
       </div>
     )
   }
