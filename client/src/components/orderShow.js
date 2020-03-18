@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import ConfirmFollowUp from './confirmFollowUp'
 import Moment from 'react-moment'
 import { Button, Icon, Container, Header, Item } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
 
 class OrderShow extends React.Component {
 
