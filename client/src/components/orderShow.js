@@ -28,9 +28,7 @@ class OrderShow extends React.Component {
 
   deleteOrder = () => {
     this.props.deleteOrder(this.state.order)
-    this.setState({
-      deleted: true 
-    })
+    this.props.history.push("/")
   }
 
   congrats = () => {
@@ -40,9 +38,6 @@ class OrderShow extends React.Component {
   }
 
   render(){
-    if ( this.state.deleted ) {
-      return <Redirect to="/" />
-    }
     return (
       <Container textAlign="center">
         { this.state.order.follow_up ? < ConfirmFollowUp updateOrder={this.props.updateOrder} order={this.state.order} updateOrderState={this.updateOrderState} /> : null }
