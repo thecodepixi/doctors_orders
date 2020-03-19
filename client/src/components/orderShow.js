@@ -44,10 +44,10 @@ class OrderShow extends React.Component {
         <Item.Group className="order-show">
           <Item>
           <Item.Content>
-            <Item.Header as="h2">
+            <Header as="h2" color="teal">
             Doctor's Orders from <Moment format="dddd, LL">{this.state.order.appointment_date.split("T")[0]}</Moment>
           
-        </Item.Header>
+        </Header>
         <Button onClick={this.deleteOrder} animated floated="right" icon > 
           <Button.Content visible>
             <Icon name="close"/>

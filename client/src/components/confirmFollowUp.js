@@ -4,8 +4,8 @@ import { Checkbox, Header, Divider} from 'semantic-ui-react'
 const ConfirmFollowUp = props => {
 
   const handleClick = () => {
-    props.updateOrder({ id: props.order.id })
     props.updateOrderState()
+    props.updateOrder({ id: props.order.id })
   }
 
   const followUpForm = () => {
@@ -23,6 +23,10 @@ const ConfirmFollowUp = props => {
   if ( props.order.follow_up ) {
     return (
       followUpForm()
+    )
+  } else {
+    return (
+      null 
     )
   }
 

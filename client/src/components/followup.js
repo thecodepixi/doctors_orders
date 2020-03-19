@@ -9,7 +9,7 @@ const FollowUp = (props) => {
   return (
     <div>
       <Header as="h2" icon textAlign="center">
-        <Icon name="exclamation circle" circular color="yellow"/>
+        <Icon name="exclamation circle" circular color="orange"/>
         <Header.Content>Follow Up Needed:</Header.Content>
       </Header>
       <Grid columns={3} stackable doubling>

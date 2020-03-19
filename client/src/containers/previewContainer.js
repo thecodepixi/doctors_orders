@@ -14,10 +14,11 @@ class PreviewContainer extends React.Component {
 
   render() {
 
+    let followUpOrders = this.props.orders.filter( order => order.follow_up === true )
     return (
       <Container>
-        { this.props.follow_up_orders.length > 0 ? <FollowUp orders={this.props.follow_up_orders} /> : null }
-        <PreviewList orders={this.props.orders} followUpOrders={this.props.follow_up_orders} />
+        { followUpOrders.length > 0 ? <FollowUp orders={followUpOrders} /> : null }
+        <PreviewList orders={this.props.orders} />
       </Container>
     )
   }
@@ -25,8 +26,7 @@ class PreviewContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    orders: state.orders,
-    follow_up_orders: state.follow_up_orders
+    orders: state.orders
   }
 }
 

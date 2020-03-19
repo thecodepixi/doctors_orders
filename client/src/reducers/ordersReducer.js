@@ -1,5 +1,5 @@
 export default function ordersReducer(
-  state = { orders: [], follow_up_orders: [], fetching: false }, action ) {
+  state = { orders: [], fetching: false }, action ) {
     console.log(action)
     let idx;
     switch ( action.type ) {
@@ -7,42 +7,30 @@ export default function ordersReducer(
         return {
           ...state,
           orders: [...state.orders],
-          follow_up_orders: [...state.follow_up_orders],
           fetching: true 
         }
       case "GET_ORDERS" :
         return {
           ...state,
           orders: action.orders.orders,
-          follow_up_orders: action.orders.follow_up_orders,
           fetching: false 
         }
       case "ADD_ORDER":
         console.log(action.order)
-        if ( action.order.follow_up ) {
-          return {
-            ...state,
-            orders: state.orders.concat(action.order),
-            follow_up_orders: state.follow_up_orders.concat(action.order)
-          }
-        } else {
-          return {
+        return {
             ...state,
             orders: state.orders.concat(action.order)
           }
-        }
       case "UPDATE_ORDER": 
-        idx = state.orders.indexOf( order => order.id === action.order.id )
+        let unchangedOrders = state.orders.filter( order => order.id !== action.order.id)
         return {
           ...state,
-          orders: [...state.orders.slice(0, idx), action.order, ...state.orders.slice(idx, state.orders.length -1 )],
-          follow_up_orders : [...state.follow_up_orders.splice(idx,1)]
+          orders: unchangedOrders.concat(action.order)
         }
       case "DELETE_ORDER": 
         return {
           ...state,
-          orders: state.orders.filter( order => order.id !== action.order.id),
-          follow_up_orders: state.follow_up_orders.filter( order => order.id !== action.order.id)
+          orders: state.orders.filter( order => order.id !== action.order.id)
         }
       default: 
         return state 

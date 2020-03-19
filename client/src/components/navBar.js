@@ -6,16 +6,16 @@ const NavBar = () => {
   return (
     <Menu color="teal">
       <Menu.Item name="home">
-        <Link to={"/"}><Icon name="doctor" size="big" color="green"/></Link>
+        <Link to={"/"}><Icon name="doctor" size="big" color="teal"/></Link>
       </Menu.Item>
-      <Menu.Item header><Header color="blue">Doctor's Orders</Header></Menu.Item>
+      <Menu.Item header><Header color="teal">Doctor's Orders</Header></Menu.Item>
       <Menu.Item name="orderForm" position="right" color="green">
         <Link to={"/orders/new"} >
           <Icon.Group size="large">
-            <Icon name="clipboard outline" color="olive"/> 
-            <Icon corner="bottom right" name="plus" color="green"/>
+            <Icon name="clipboard outline" color="teal"/> 
+            <Icon corner="bottom right" name="plus" color="orange"/> 
           </Icon.Group>
-           Add Latest Doctor's Orders
+          Add Latest Doctor's Orders
           </Link>
       </Menu.Item>
     </Menu>
